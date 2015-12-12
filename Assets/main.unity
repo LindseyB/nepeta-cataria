@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 5160226}
   - 212: {fileID: 5160225}
+  - 114: {fileID: 5160227}
   m_Layer: 0
   m_Name: speaker2
   m_TagString: Untagged
@@ -134,11 +135,24 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 5160224}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.443226635, y: .553337455, z: 0}
+  m_LocalPosition: {x: -.250881284, y: .585390091, z: -.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 1583356201}
+  m_RootOrder: 0
+--- !u!114 &5160227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 5160224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ccc6a0780c321f409801b826fb21fb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seconds: .100000001
+  bigScale: 1.02999997
 --- !u!1 &9917076
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,6 +334,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 356165318}
   - 212: {fileID: 356165317}
+  - 114: {fileID: 356165319}
   m_Layer: 0
   m_Name: speaker2
   m_TagString: Untagged
@@ -360,11 +375,24 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 356165316}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.83585596, y: .609088302, z: 0}
+  m_LocalPosition: {x: 8.0282011, y: .641140938, z: -.5}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_Father: {fileID: 1939923938}
+  m_RootOrder: 0
+--- !u!114 &356165319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 356165316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ccc6a0780c321f409801b826fb21fb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seconds: .100000001
+  bigScale: 1.02999997
 --- !u!1 &369132914
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,7 +662,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 10
 --- !u!1 &1406554515
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,6 +747,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!1 &1583356200
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1583356201}
+  m_Layer: 0
+  m_Name: LeftSpeakers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1583356201
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1583356200}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.192345351, y: -.0320526473, z: .5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5160226}
+  - {fileID: 1779972328}
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
 --- !u!1 &1675036550
 GameObject:
   m_ObjectHideFlags: 0
@@ -1846,6 +1903,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1779972328}
   - 212: {fileID: 1779972327}
+  - 114: {fileID: 1779972329}
   m_Layer: 0
   m_Name: speaker1
   m_TagString: Untagged
@@ -1886,11 +1944,24 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1779972326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .00278553367, y: .218828216, z: 0}
+  m_LocalPosition: {x: .195130885, y: .250880867, z: -.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_Father: {fileID: 1583356201}
+  m_RootOrder: 1
+--- !u!114 &1779972329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1779972326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ccc6a0780c321f409801b826fb21fb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seconds: .200000003
+  bigScale: 1.02999997
 --- !u!1 &1896384648
 GameObject:
   m_ObjectHideFlags: 0
@@ -2049,6 +2120,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1406554516}
   m_RootOrder: 0
+--- !u!1 &1939923937
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1939923938}
+  m_Layer: 0
+  m_Name: RightSpeakers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1939923938
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1939923937}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.192345351, y: -.0320526473, z: .5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 356165318}
+  - {fileID: 2125798462}
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
 --- !u!1 &2083075586
 GameObject:
   m_ObjectHideFlags: 0
@@ -2144,6 +2244,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2125798462}
   - 212: {fileID: 2125798461}
+  - 114: {fileID: 2125798463}
   m_Layer: 0
   m_Name: speaker1
   m_TagString: Untagged
@@ -2184,8 +2285,21 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2125798460}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.44999981, y: .274580121, z: 0}
+  m_LocalPosition: {x: 7.64234495, y: .306632757, z: -.5}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_Father: {fileID: 1939923938}
+  m_RootOrder: 1
+--- !u!114 &2125798463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2125798460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ccc6a0780c321f409801b826fb21fb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seconds: .200000003
+  bigScale: 1.02999997
