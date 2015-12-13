@@ -9,21 +9,24 @@ public class SpeakerThump : MonoBehaviour {
     float currentScale;
     float speed = 0.5f;
 
+    private Vector3 startingScale;
+
 	void Start () {
+        startingScale = gameObject.transform.localScale;
         StartCoroutine("ThumpScale");
 	}
 
     IEnumerator ThumpScale() {
         while (true) {
             currentScale = bigScale;
-            gameObject.transform.localScale = Vector3.one * bigScale;
+            gameObject.transform.localScale = startingScale * bigScale;
 
             yield return new WaitForSeconds(seconds);
 
             while (currentScale > smallScale) {
                 currentScale -= (Time.deltaTime * speed);
                 yield return new WaitForSeconds(0.1f);
-                gameObject.transform.localScale = Vector3.one * currentScale;
+                gameObject.transform.localScale = startingScale * currentScale;
             }
         }
     }
