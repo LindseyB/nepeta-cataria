@@ -9,7 +9,7 @@ public class YesPaw : MonoBehaviour {
     }
 
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.RightArrow) && nopePaw.NotAnimating()) {
+        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.RightArrow)) && nopePaw.NotAnimating()) {
             GameObject currentCat;
             if (currentCat = GameObject.FindWithTag("CurrentCat")) {
                 gameObject.GetComponent<Animator>().SetTrigger("yesTrigger");
