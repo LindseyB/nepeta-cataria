@@ -8,7 +8,7 @@ public class GetHighscores : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        var json = new WebClient().DownloadString("http://47bf6273.ngrok.com/highscores.json");
+        var json = new WebClient().DownloadString("http://6b1fa8b1.ngrok.com/highscores.json");
         var result = JSON.Parse(json);
         string highscores = "";
 
