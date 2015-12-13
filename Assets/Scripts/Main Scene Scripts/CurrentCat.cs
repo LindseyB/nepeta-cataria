@@ -6,6 +6,7 @@ public class CurrentCat : MonoBehaviour {
     int doneHash = Animator.StringToHash("Done");
 
 	void Start () {
+         // TODO: dynamically set up parts
         animator = gameObject.GetComponent<Animator>();
 	}
 	
