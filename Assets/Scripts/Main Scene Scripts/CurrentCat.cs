@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class CurrentCat : MonoBehaviour {
     Animator animator;
-    int doneHash = Animator.StringToHash("Done");
+    int doneHash = Animator.StringToHash("doneCat");
     int moveLineHash = Animator.StringToHash("moveIntoLine");
     int moveClubHash = Animator.StringToHash("moveIntoClub");
 
