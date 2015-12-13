@@ -37,11 +37,11 @@ public class CurrentCat : MonoBehaviour {
                                 Random.Range(0.0f, 1.0f),
                                 Random.Range(0.0f, 1.0f));
         SpriteRenderer catTail = gameObject.transform.Find("CatTail").GetComponent<SpriteRenderer>();
-        catTail.sprite = tails[Random.Range(0, tails.Length-1)];
+        catTail.sprite = tails[Random.Range(0, tails.Length)];
         catTail.color = color;
 
         SpriteRenderer catHead = gameObject.transform.Find("CatHead").GetComponent<SpriteRenderer>();
-        catHead.sprite = heads[Random.Range(0, heads.Length-1)];
+        catHead.sprite = heads[Random.Range(0, heads.Length)];
         if (catHead.sprite.name == "cat-hair-1" || catHead.sprite.name == "cat-hair-3") {
             catHead.color = color;
         } else {
