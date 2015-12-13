@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class CurrentCat : MonoBehaviour {
     Animator animator;
@@ -7,7 +8,10 @@ public class CurrentCat : MonoBehaviour {
     int moveLineHash = Animator.StringToHash("moveIntoLine");
     int moveClubHash = Animator.StringToHash("moveIntoClub");
 
+    Sprite[] tails;
+
 	void Start () {
+        tails = Resources.LoadAll<Sprite>("Tails");
         Concatenate();
         animator = gameObject.GetComponent<Animator>();
         
@@ -30,7 +34,9 @@ public class CurrentCat : MonoBehaviour {
         Color color = new Color(Random.Range(0.0f, 1.0f),
                                 Random.Range(0.0f, 1.0f),
                                 Random.Range(0.0f, 1.0f));
-        gameObject.transform.Find("CatTail").GetComponent<SpriteRenderer>().color = color;
+        SpriteRenderer catTail = gameObject.transform.Find("CatTail").GetComponent<SpriteRenderer>();
+        catTail.sprite = tails[Random.Range(0, tails.Length-1)];
+        catTail.color = color;
         gameObject.transform.Find("CatBase").GetComponent<SpriteRenderer>().color = color;
     }
 }
