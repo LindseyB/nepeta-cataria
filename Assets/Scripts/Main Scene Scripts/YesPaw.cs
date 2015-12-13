@@ -13,6 +13,9 @@ public class YesPaw : MonoBehaviour {
                 if (GameObject.FindWithTag("CurrentCat") == null) {
                     currentCat = Instantiate(currentCat);
                     currentCat.tag = "CurrentCat";
+                    currentCat.GetComponentInChildren<SpriteRenderer>().color = new Color(Random.Range(0.0f, 1.0f),
+                                                                                          Random.Range(0.0f, 1.0f),
+                                                                                          Random.Range(0.0f, 1.0f));
                 }
             }
         }
