@@ -8,7 +8,7 @@ public class CurrentCat : MonoBehaviour {
     int moveClubHash = Animator.StringToHash("moveIntoClub");
 
 	void Start () {
-         // TODO: dynamically set up parts
+        Concatenate();
         animator = gameObject.GetComponent<Animator>();
         
 	}
@@ -24,4 +24,13 @@ public class CurrentCat : MonoBehaviour {
             catAnimator.Stand();
         }
 	}
+
+    // Generate a new cat with special properties
+    void Concatenate () {
+        Color color = new Color(Random.Range(0.0f, 1.0f),
+                                Random.Range(0.0f, 1.0f),
+                                Random.Range(0.0f, 1.0f));
+        gameObject.transform.Find("CatTail").GetComponent<SpriteRenderer>().color = color;
+        gameObject.transform.Find("CatBase").GetComponent<SpriteRenderer>().color = color;
+    }
 }
