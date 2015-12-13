@@ -1,0 +1,195 @@
+fileFormatVersion: 2
+guid: 391d1c06b7b936f4fbca3485651967b4
+timeCreated: 1450044220
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: score-multipliers_0
+    21300002: score-multipliers_1
+    21300004: score-multipliers_2
+    21300006: score-multipliers_3
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: score-multipliers_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 183
+        height: 145
+      alignment: 9
+      pivot: {x: 0.5339787, y: 0.5428834}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -2.7181015, y: -30.718094}
+        - {x: -3.7181015, y: -39.718094}
+        - {x: 8.2818985, y: -68.718094}
+        - {x: 70.2819, y: -68.718094}
+        - {x: 78.2819, y: -36.718094}
+        - {x: 79.2819, y: -26.718094}
+        - {x: 85.2819, y: -2.7180939}
+        - {x: 85.2819, y: 45.281906}
+        - {x: 79.2819, y: 58.281906}
+        - {x: 60.2819, y: 56.281906}
+        - {x: 54.2819, y: 52.281906}
+        - {x: 46.2819, y: 42.281906}
+        - {x: 12.2818985, y: 35.281906}
+        - {x: 9.2818985, y: 33.281906}
+        - {x: 0.2818985, y: 14.281906}
+        - {x: -2.7181015, y: 9.281906}
+        - {x: -2.7181015, y: 7.281906}
+        - {x: -5.7181015, y: 6.281906}
+        - {x: -1.7181015, y: 11.281906}
+        - {x: 1.2818985, y: 16.281906}
+        - {x: 7.2818985, y: 29.281906}
+        - {x: 9.2818985, y: 31.281906}
+        - {x: 10.2818985, y: 34.281906}
+        - {x: 12.2818985, y: 36.281906}
+        - {x: 22.281898, y: 50.281906}
+        - {x: 27.281898, y: 66.281906}
+        - {x: -72.7181, y: 66.281906}
+        - {x: -97.7181, y: 12.281906}
+        - {x: -97.7181, y: -46.718094}
+        - {x: -40.7181, y: -72.718094}
+        - {x: -23.718102, y: -72.718094}
+        - {x: -20.718102, y: -68.718094}
+        - {x: -18.718102, y: -42.718094}
+        - {x: -6.7181015, y: -34.718094}
+    - name: score-multipliers_1
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 0
+        width: 178
+        height: 145
+      alignment: 9
+      pivot: {x: 0.52445316, y: 0.5471718}
+      border: {x: 9, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 84.64734, y: -3.3399048}
+        - {x: 84.64734, y: 44.660095}
+        - {x: 78.64734, y: 57.660095}
+        - {x: 59.64734, y: 55.660095}
+        - {x: 53.64734, y: 51.660095}
+        - {x: 45.64734, y: 41.660095}
+        - {x: 14.647339, y: 65.660095}
+        - {x: -71.35266, y: 65.660095}
+        - {x: -86.35266, y: -1.3399048}
+        - {x: -86.35266, y: -53.339905}
+        - {x: -61.35266, y: -65.339905}
+        - {x: 24.647339, y: -65.339905}
+        - {x: 64.64734, y: -58.339905}
+        - {x: 77.64734, y: -37.339905}
+        - {x: 78.64734, y: -27.339905}
+      - - {x: -93.35266, y: 30.660095}
+        - {x: -90.35266, y: 31.660095}
+        - {x: -90.35266, y: 39.660095}
+        - {x: -92.35266, y: 41.660095}
+        - {x: -93.35266, y: 41.660095}
+    - name: score-multipliers_2
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 0
+        width: 197
+        height: 145
+      alignment: 9
+      pivot: {x: 0.5662842, y: 0.51286507}
+      border: {x: 16, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 65.44202, y: -74.36543}
+        - {x: 74.44202, y: -74.36543}
+        - {x: 85.44202, y: -44.365433}
+        - {x: 85.44202, y: 67.63457}
+        - {x: 70.44202, y: 70.63457}
+        - {x: -96.55798, y: 70.63457}
+        - {x: -96.55798, y: -74.36543}
+        - {x: 1.4420166, y: -74.36543}
+        - {x: 3.4420166, y: -65.36543}
+        - {x: 4.4420166, y: -46.365433}
+        - {x: 21.442017, y: -55.365433}
+      - - {x: -111.55798, y: 48.634567}
+        - {x: -111.55798, y: 30.634567}
+        - {x: -108.55798, y: 31.634567}
+        - {x: -105.55798, y: 34.634567}
+        - {x: -105.55798, y: 44.634567}
+        - {x: -106.55798, y: 48.634567}
+    - name: score-multipliers_3
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 0
+        width: 160
+        height: 145
+      alignment: 9
+      pivot: {x: 0.47773018, y: 0.5779488}
+      border: {x: 20, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 57.56317, y: 61.197426}
+        - {x: 53.56317, y: 59.197426}
+        - {x: 45.56317, y: 48.197426}
+        - {x: 11.563171, y: 41.197426}
+        - {x: 8.563171, y: 39.197426}
+        - {x: -2.4368286, y: 18.197426}
+        - {x: -2.4368286, y: 11.197426}
+        - {x: -2.4368286, y: 18.197426}
+        - {x: 2.5631714, y: 31.197426}
+        - {x: 9.563171, y: 41.197426}
+        - {x: 9.563171, y: 55.197426}
+        - {x: -4.4368286, y: 61.197426}
+        - {x: -46.43683, y: 61.197426}
+        - {x: -76.43683, y: -7.802574}
+        - {x: -76.43683, y: -83.802574}
+        - {x: -0.4368286, y: -83.802574}
+        - {x: 83.56317, y: -61.802574}
+        - {x: 83.56317, y: 52.197426}
+        - {x: 67.56317, y: 61.197426}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
