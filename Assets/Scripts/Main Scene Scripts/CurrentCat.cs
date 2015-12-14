@@ -9,11 +9,13 @@ public class CurrentCat : MonoBehaviour {
     int moveClubHash = Animator.StringToHash("moveIntoClub");
 
     Sprite[] tails,
-             heads;
+             heads,
+             necks;
 
 	void Start () {
         tails = Resources.LoadAll<Sprite>("Tails");
         heads = Resources.LoadAll<Sprite>("Heads");
+        necks = Resources.LoadAll<Sprite>("Necks");
         Concatenate();
         animator = gameObject.GetComponent<Animator>();
 	}
@@ -54,6 +56,9 @@ public class CurrentCat : MonoBehaviour {
         } else {
             catHead.color = Color.white;
         }
+
+        SpriteRenderer catNeck = gameObject.transform.Find("CatNeck").GetComponent<SpriteRenderer>();
+        catNeck.sprite = necks[Random.Range(0, necks.Length)];
 
         gameObject.transform.Find("CatBase").GetComponent<SpriteRenderer>().color = color;
     }
