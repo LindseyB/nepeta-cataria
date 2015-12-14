@@ -9,12 +9,14 @@ public class VIPList : MonoBehaviour {
 
     List<Sprite> headThumbnails;
     List<Sprite> tailThumbnails;
+    List<Sprite> neckThumbnails;
     List<Sprite> rules;
     List<Sprite> antiRules;
 
 	void Start () {
         headThumbnails = new List<Sprite>(Resources.LoadAll<Sprite>("VIPList/Heads"));
         tailThumbnails = new List<Sprite>(Resources.LoadAll<Sprite>("VIPList/Tails"));
+        neckThumbnails = new List<Sprite>(Resources.LoadAll<Sprite>("VIPList/Necks"));
         rules     = SetVIPRules(numberOfRules);
         antiRules = SetVIPRules(numberOfAntiRules);
 
@@ -42,6 +44,7 @@ public class VIPList : MonoBehaviour {
         List<List<Sprite>> allRules = new List<List<Sprite>>();
         allRules.Add(headThumbnails);
         allRules.Add(tailThumbnails);
+        allRules.Add(neckThumbnails);
 
         int ruleSetIndex = Random.Range(0, allRules.Count);
         List<Sprite> ruleSet = allRules[ruleSetIndex];
