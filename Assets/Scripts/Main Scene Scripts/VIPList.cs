@@ -7,7 +7,6 @@ public class VIPList : MonoBehaviour {
     private int numberOfRules     = 5;
     private int numberOfAntiRules = 3;
 
-    List<List<Sprite>> allRules;
     List<Sprite> headThumbnails;
     List<Sprite> tailThumbnails;
     List<Sprite> neckThumbnails;
@@ -19,13 +18,8 @@ public class VIPList : MonoBehaviour {
         tailThumbnails = new List<Sprite>(Resources.LoadAll<Sprite>("VIPList/Tails"));
         neckThumbnails = new List<Sprite>(Resources.LoadAll<Sprite>("VIPList/Necks"));
 
-        allRules = new List<List<Sprite>>();
-        allRules.Add(headThumbnails);
-        allRules.Add(tailThumbnails);
-        allRules.Add(neckThumbnails);
-
-        rules     = SetVIPRules(numberOfRules);
-        antiRules = SetVIPRules(numberOfAntiRules);
+        rules     = SetVIPRules(numberOfRules,     2);
+        antiRules = SetVIPRules(numberOfAntiRules, 1);
 
         for (int i=0; i < numberOfRules; i++) {
             Transform rule   = gameObject.transform.Find("Rule" + i);
@@ -40,24 +34,42 @@ public class VIPList : MonoBehaviour {
         }
     }
 
-    private List<Sprite> SetVIPRules(int rulesYo) {
-        List<Sprite> newRules = new List<Sprite>();
+    private List<Sprite> SetVIPRules(int rulesYo, int maxPerCategory) {
+		List<Sprite> newRules = new List<Sprite>();
+		List<List<Sprite>> allRules = new List<List<Sprite>>();
+
+		allRules.Add(headThumbnails);
+		allRules.Add(tailThumbnails);
+		allRules.Add(neckThumbnails);
 
         for (int i=0; i < rulesYo; i++) {
-            Sprite rule = PickRandomRule();
+            Sprite rule = PickRandomRule(allRules, maxPerCategory);
             newRules.Add(rule);
         }
 
         return newRules;
     }
 
-    private Sprite PickRandomRule() {
+    private Sprite PickRandomRule(List<List<Sprite>> allRules, int maxPerCategory) {
         int ruleSetIndex = Random.Range(0, allRules.Count);
         List<Sprite> ruleSet = allRules[ruleSetIndex];
 
         int ruleIndex = Random.Range(0, ruleSet.Count);
         Sprite rule = ruleSet[ruleIndex];
+
+		// remove the chosen rule from all possible candidates
         ruleSet.RemoveAt(ruleIndex);
+		if (rule.name.Contains ("head")) {
+			headThumbnails = ruleSet;
+		} else if (rule.name.Contains("tail")) {
+			tailThumbnails = ruleSet;
+		} else if (rule.name.Contains("neck")) {
+			neckThumbnails = ruleSet;
+		}
+
+		if (ruleSet.Count <= (5 - maxPerCategory)) { // 5 is the initial length of each ruleSet aka the variety of attributes per category
+			allRules.RemoveAt(ruleSetIndex);
+		}
 
         return rule;
     }
