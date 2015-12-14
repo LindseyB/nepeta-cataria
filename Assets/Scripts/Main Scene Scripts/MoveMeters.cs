@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class MoveMeters : MonoBehaviour {
-    int meter_value = 0;
+    int meter_value = 25;
     const int MAX_METER = 120;
     float height;
     public ScoreMultiplier scoreMultiplier;
@@ -46,7 +46,7 @@ public class MoveMeters : MonoBehaviour {
 
     IEnumerator Drain() {
         while (true) {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(1f);
             if (meter_value > 0) { meter_value--; }
         }
     }
