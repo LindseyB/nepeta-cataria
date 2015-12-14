@@ -11,6 +11,8 @@ public class YesPaw : MonoBehaviour {
     }
 
 	void Update() {
+        if (nopePaw.isGameOver()) { return; }
+
         if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.RightArrow)) && nopePaw.NotAnimating()) {
             GameObject currentCat;
             if (currentCat = GameObject.FindWithTag("CurrentCat")) {

@@ -2,7 +2,15 @@
 using System.Collections;
 
 public class NopePaw : MonoBehaviour {
+    MoveMeters moveMeters;
+
+    void Start () {
+        moveMeters = FindObjectOfType<MoveMeters>();
+    }
+
 	void Update () {
+        if (isGameOver()) { return;  }
+
         if ((Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.LeftArrow)) && NotAnimating()) {
             GameObject currentCat;
             if (currentCat = GameObject.FindWithTag("CurrentCat")) {
@@ -19,6 +27,10 @@ public class NopePaw : MonoBehaviour {
             }
         }
 	}
+
+    public bool isGameOver() {
+        return moveMeters.gameOver;
+    }
 
     public bool NotAnimating() {
         return ((gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).shortNameHash == 

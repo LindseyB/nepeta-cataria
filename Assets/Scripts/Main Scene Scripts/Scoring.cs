@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
+using System.Net;
+using SimpleJSON;
 
 public class Scoring : MonoBehaviour {
     public int score = 0;
@@ -11,13 +12,15 @@ public class Scoring : MonoBehaviour {
         UpdateScore();
 	}
 
-	void Update () {
-	
-	}
-
     public void UpdateScore() {
         foreach(Text item in scoreItems) {
             item.text = score.ToString();
         }
+    }
+
+    public bool isHighscore() {
+        string json = new WebClient().DownloadString("http://nepeta-cataria-server.herokuapp.com/highscores.json");
+        JSONArray result = JSON.Parse(json) as JSONArray;
+        return score > result[result.Count - 1]["score"].AsInt;
     }
 }

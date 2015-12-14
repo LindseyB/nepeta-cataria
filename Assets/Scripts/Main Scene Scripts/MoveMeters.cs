@@ -5,14 +5,25 @@ public class MoveMeters : MonoBehaviour {
     int meter_value = 25;
     const int MAX_METER = 120;
     float height;
+
     public ScoreMultiplier scoreMultiplier;
+    public bool gameOver = false;
+
+    Scoring scoring;
 
     void Start() {
         scoreMultiplier = FindObjectOfType<ScoreMultiplier>();
+        scoring = FindObjectOfType<Scoring>();
         StartCoroutine("Drain");
     }
 
 	void Update() {
+        if (gameOver) { return; }
+
+        if (meter_value <= 0) {
+            GameOver();
+        }
+
         height = ((meter_value / 100.0f) * 4);
 
         foreach (LineRenderer lr in gameObject.GetComponentsInChildren<LineRenderer>()) {
@@ -41,6 +52,15 @@ public class MoveMeters : MonoBehaviour {
             meter_value = MAX_METER;
         } else if (meter_value < 0) {
             meter_value = 0;
+        }
+    }
+
+    void GameOver() {
+        gameOver = true;
+        if (scoring.isHighscore()) {
+            GameObject.Find("HighScore").GetComponent<Canvas>().enabled = true;
+        } else {
+            GameObject.Find("GameOver").GetComponent<Canvas>().enabled = true;
         }
     }
 

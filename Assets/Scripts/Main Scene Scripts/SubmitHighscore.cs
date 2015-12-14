@@ -12,6 +12,7 @@ public class SubmitHighscore : MonoBehaviour {
         request.Method = "POST";
         request.GetResponse();
 
-        Application.LoadLevel("start");
+        GameObject.Find("HighScore").SetActive(false);
+        GameObject.Find("GameOver").GetComponent<Canvas>().enabled = true;
     }
 }
