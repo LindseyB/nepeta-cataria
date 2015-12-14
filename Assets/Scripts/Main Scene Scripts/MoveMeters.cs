@@ -5,7 +5,7 @@ public class MoveMeters : MonoBehaviour {
     int meter_value = 0;
     const int MAX_METER = 120;
     float height;
-    ScoreMultiplier scoreMultiplier;
+    public ScoreMultiplier scoreMultiplier;
 
     void Start() {
         scoreMultiplier = FindObjectOfType<ScoreMultiplier>();

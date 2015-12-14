@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class Scoring : MonoBehaviour {
-    int score = 0;
+    public int score = 0;
     Text[] scoreItems;
 
 	void Start () {
@@ -15,7 +15,7 @@ public class Scoring : MonoBehaviour {
 	
 	}
 
-    void UpdateScore() {
+    public void UpdateScore() {
         foreach(Text item in scoreItems) {
             item.text = score.ToString();
         }

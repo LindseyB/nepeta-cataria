@@ -7,6 +7,7 @@ public class VIPList : MonoBehaviour {
     private int numberOfRules     = 5;
     private int numberOfAntiRules = 3;
     private MoveMeters moveMeters;
+    private Scoring scoring;
 
     List<Sprite> headThumbnails;
     List<Sprite> tailThumbnails;
@@ -16,6 +17,7 @@ public class VIPList : MonoBehaviour {
 
 	void Start () {
         moveMeters = FindObjectOfType<MoveMeters>();
+        scoring = FindObjectOfType<Scoring>();
 
         headThumbnails = new List<Sprite>(Resources.LoadAll<Sprite>("VIPList/Heads"));
         tailThumbnails = new List<Sprite>(Resources.LoadAll<Sprite>("VIPList/Tails"));
@@ -118,13 +120,21 @@ public class VIPList : MonoBehaviour {
                 violations++;
             }
         }
-        
+
+        int value = 0;
         if(violations > 0) {
-            moveMeters.UpdateMeter(-5 - (5 * violations));
+            value = (-5 - (5 * violations));
         } else if (matching > 0) {
-            moveMeters.UpdateMeter(5 * matching);
+            value = (5 * matching);
         } else {
-            moveMeters.UpdateMeter(-5);
+            value = -5;
+        }
+
+        moveMeters.UpdateMeter(value);
+
+        if (value > 0) {
+            scoring.score += (moveMeters.scoreMultiplier.currentMultiplier * value);
+            scoring.UpdateScore();
         }
     }
 }
