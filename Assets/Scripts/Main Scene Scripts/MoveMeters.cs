@@ -19,16 +19,16 @@ public class MoveMeters : MonoBehaviour {
             lr.SetPosition(0, new Vector3(0, height, 0));
         }
 
-        if(meter_value >= 100 && scoreMultiplier.currentMultiplier != 4) {
+        if(meter_value >= 100) {
             scoreMultiplier.currentMultiplier = 4;
             scoreMultiplier.HandleAnimations();
-        } else if(meter_value >= 75 && scoreMultiplier.currentMultiplier != 3) {
+        } else if(meter_value >= 75) {
             scoreMultiplier.currentMultiplier = 3;
             scoreMultiplier.HandleAnimations();
-        } else if(meter_value >= 50 && scoreMultiplier.currentMultiplier != 2) {
+        } else if(meter_value >= 50) {
             scoreMultiplier.currentMultiplier = 2;
             scoreMultiplier.HandleAnimations();
-        } else if(scoreMultiplier.currentMultiplier != 1) {
+        } else {
             scoreMultiplier.currentMultiplier = 1;
             scoreMultiplier.HandleAnimations();
         }
