@@ -6,6 +6,7 @@ public class VIPList : MonoBehaviour {
 
     private int numberOfRules     = 5;
     private int numberOfAntiRules = 3;
+    private MoveMeters moveMeters;
 
     List<Sprite> headThumbnails;
     List<Sprite> tailThumbnails;
@@ -14,6 +15,8 @@ public class VIPList : MonoBehaviour {
     List<Sprite> antiRules;
 
 	void Start () {
+        moveMeters = FindObjectOfType<MoveMeters>();
+
         headThumbnails = new List<Sprite>(Resources.LoadAll<Sprite>("VIPList/Heads"));
         tailThumbnails = new List<Sprite>(Resources.LoadAll<Sprite>("VIPList/Tails"));
         neckThumbnails = new List<Sprite>(Resources.LoadAll<Sprite>("VIPList/Necks"));
@@ -88,6 +91,7 @@ public class VIPList : MonoBehaviour {
 
     public void ScoreCat(GameObject cat) {
         int matching = 0;
+        int violations = 0;
         
         foreach(Sprite sprite in rules) {
             if (sprite.name.Contains("head") &&
@@ -96,14 +100,31 @@ public class VIPList : MonoBehaviour {
             } else if (sprite.name.Contains("tail") &&
                        sprite.name.Contains(cat.transform.Find("CatTail").GetComponent<SpriteRenderer>().sprite.name)) {
                 matching++;
-			} else if (sprite.name.Contains("neck") &&
-			           sprite.name.Contains(cat.transform.Find("CatNeck").GetComponent<SpriteRenderer>().sprite.name)) {
-				matching++;
-			}
+            } else if (sprite.name.Contains("neck") &&
+                       sprite.name.Contains(cat.transform.Find("CatNeck").GetComponent<SpriteRenderer>().sprite.name)) {
+                matching++;
+            }
         }
 
-        Debug.Log("Matching parts: " + matching);
-
-        // TODO: score here? elsewhere? IDK?
+        foreach(Sprite sprite in antiRules) {
+            if (sprite.name.Contains("head") &&
+                sprite.name.Contains(cat.transform.Find("CatHead").GetComponent<SpriteRenderer>().sprite.name)) {
+                violations++;
+            } else if (sprite.name.Contains("tail") &&
+                       sprite.name.Contains(cat.transform.Find("CatTail").GetComponent<SpriteRenderer>().sprite.name)) {
+                violations++;
+            } else if (sprite.name.Contains("neck") &&
+                       sprite.name.Contains(cat.transform.Find("CatNeck").GetComponent<SpriteRenderer>().sprite.name)) {
+                violations++;
+            }
+        }
+        
+        if(violations > 0) {
+            moveMeters.UpdateMeter(-5 - (5 * violations));
+        } else if (matching > 0) {
+            moveMeters.UpdateMeter(5 * matching);
+        } else {
+            moveMeters.UpdateMeter(-5);
+        }
     }
 }

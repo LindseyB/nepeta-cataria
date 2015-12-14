@@ -2,23 +2,52 @@
 using System.Collections;
 
 public class MoveMeters : MonoBehaviour {
+    int meter_value = 0;
+    const int MAX_METER = 120;
     float height;
+    ScoreMultiplier scoreMultiplier;
 
     void Start() {
-        StartCoroutine("Move");
+        scoreMultiplier = FindObjectOfType<ScoreMultiplier>();
+        StartCoroutine("Drain");
     }
 
 	void Update() {
-        // TODO: do stuff based on score
+        height = ((meter_value / 100.0f) * 4);
+
         foreach (LineRenderer lr in gameObject.GetComponentsInChildren<LineRenderer>()) {
-            lr.SetPosition(0, new Vector3(0, Mathf.PingPong(Time.time, height), 0));
+            lr.SetPosition(0, new Vector3(0, height, 0));
+        }
+
+        if(meter_value >= 100 && scoreMultiplier.currentMultiplier != 4) {
+            scoreMultiplier.currentMultiplier = 4;
+            scoreMultiplier.HandleAnimations();
+        } else if(meter_value >= 75 && scoreMultiplier.currentMultiplier != 3) {
+            scoreMultiplier.currentMultiplier = 3;
+            scoreMultiplier.HandleAnimations();
+        } else if(meter_value >= 50 && scoreMultiplier.currentMultiplier != 2) {
+            scoreMultiplier.currentMultiplier = 2;
+            scoreMultiplier.HandleAnimations();
+        } else if(scoreMultiplier.currentMultiplier != 1) {
+            scoreMultiplier.currentMultiplier = 1;
+            scoreMultiplier.HandleAnimations();
         }
     }
 
-    IEnumerator Move() {
+    public void UpdateMeter(int value) {
+        meter_value += value;
+
+        if (meter_value > MAX_METER) {
+            meter_value = MAX_METER;
+        } else if (meter_value < 0) {
+            meter_value = 0;
+        }
+    }
+
+    IEnumerator Drain() {
         while (true) {
-            height = Random.Range(0.1f, 4.0f);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(5f);
+            if (meter_value > 0) { meter_value--; }
         }
     }
 }

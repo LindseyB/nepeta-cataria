@@ -2,12 +2,13 @@
 using System.Collections;
 
 public class ScoreMultiplier : MonoBehaviour {
-    uint currentMultiplier = 1;
     ParticleSystem glitter;
     ParticleSystem fog;
     GameObject lasers;
     Animator crowdAnimator;
     Animator multAnimator;
+
+    public int currentMultiplier = 1;
 
     int[] hashes = new int[] {
         Animator.StringToHash("triggerMult1"),
@@ -50,21 +51,7 @@ public class ScoreMultiplier : MonoBehaviour {
         }
 	}
 
-    void HandleAnimations() {
+    public void HandleAnimations() {
         multAnimator.SetTrigger(hashes[currentMultiplier-1]);
-    }
-
-    public void IncreaseMultiplier() {
-        if (currentMultiplier < 4) {
-            currentMultiplier++;
-            HandleAnimations();
-        }
-    }
-
-    public void DecreaseMultiplier() {
-        if (currentMultiplier > 1) {
-            currentMultiplier--;
-            HandleAnimations();
-        }
     }
 }
