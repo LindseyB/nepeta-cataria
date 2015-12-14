@@ -42,7 +42,15 @@ public class CurrentCat : MonoBehaviour {
         SpriteRenderer catHead = gameObject.transform.Find("CatHead").GetComponent<SpriteRenderer>();
         catHead.sprite = heads[Random.Range(0, heads.Length)];
         if (catHead.sprite.name == "cat-head-1" || catHead.sprite.name == "cat-head-3") {
-            catHead.color = color;
+            HSBColor hair_color = new HSBColor(color);
+
+            if (hair_color.b > 0.5) {
+                hair_color.b -= Random.Range(0.2f, 0.4f);
+            } else {
+                hair_color.b += Random.Range(0.2f, 0.4f);
+            }
+
+            catHead.color = hair_color.ToColor();
         } else {
             catHead.color = Color.white;
         }
