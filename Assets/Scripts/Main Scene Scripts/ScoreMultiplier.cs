@@ -7,12 +7,14 @@ public class ScoreMultiplier : MonoBehaviour {
     ParticleSystem fog;
     GameObject lasers;
     Animator crowdAnimator;
+    Animator multAnimator;
 
 	void Start() {
         glitter = gameObject.GetComponentInChildren<ParticleSystem>();
         fog = GameObject.Find("FogMachine").GetComponent<ParticleSystem>();
         lasers = GameObject.Find("Lasers");
         crowdAnimator = GameObject.Find("Crowd").GetComponent<Animator>();
+        multAnimator = gameObject.GetComponent<Animator>();
     }
 
 	void Update() {
@@ -41,11 +43,17 @@ public class ScoreMultiplier : MonoBehaviour {
         }
 	}
 
-    void IncreaseMultiplier() {
-        currentMultiplier++;
+    void HandleAnimations() {
+        multAnimator.SetTrigger("triggerMult" + currentMultiplier);
     }
 
-    void DecreaseMultiplier() {
+    public void IncreaseMultiplier() {
+        currentMultiplier++;
+        HandleAnimations();
+    }
+
+    public void DecreaseMultiplier() {
         currentMultiplier--;
+        HandleAnimations();
     }
 }
