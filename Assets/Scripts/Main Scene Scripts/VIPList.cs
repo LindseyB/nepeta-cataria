@@ -96,7 +96,10 @@ public class VIPList : MonoBehaviour {
             } else if (sprite.name.Contains("tail") &&
                        sprite.name.Contains(cat.transform.Find("CatTail").GetComponent<SpriteRenderer>().sprite.name)) {
                 matching++;
-            }
+			} else if (sprite.name.Contains("neck") &&
+			           sprite.name.Contains(cat.transform.Find("CatNeck").GetComponent<SpriteRenderer>().sprite.name)) {
+				matching++;
+			}
         }
 
         Debug.Log("Matching parts: " + matching);
