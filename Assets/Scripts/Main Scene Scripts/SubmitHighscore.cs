@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SubmitHighscore : MonoBehaviour {
     void Submit() {
-        int score = 0; // TODO: replace with actual score
+        int score = FindObjectOfType<Scoring>().score;
         string name = GameObject.Find("Name").GetComponent<Text>().text;
 
         WebRequest request = WebRequest.Create("http://nepeta-cataria-server.herokuapp.com/add/" + name + "/score/" + score + "/");

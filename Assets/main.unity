@@ -1522,6 +1522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreMultiplier: {fileID: 0}
+  gameOver: 0
 --- !u!1 &708802803
 GameObject:
   m_ObjectHideFlags: 0
