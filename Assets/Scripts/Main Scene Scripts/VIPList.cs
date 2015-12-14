@@ -16,10 +16,21 @@ public class VIPList : MonoBehaviour {
     List<Sprite> neckThumbnails;
     List<Sprite> rules;
     List<Sprite> antiRules;
+    List<List<Sprite>> allRules;
+
+    List<string> rulesOptions;
+    List<string> antiRulesOptions;
+
+    Hashtable rulesCategories;
 
     public int catCount = 0;
 
 	void Start () {
+        rulesCategories = new Hashtable();
+        rulesCategories.Add("head", 0);
+        rulesCategories.Add("tail", 0);
+        rulesCategories.Add("neck", 0);
+
         moveMeters = FindObjectOfType<MoveMeters>();
         scoring = FindObjectOfType<Scoring>();
 
@@ -27,58 +38,54 @@ public class VIPList : MonoBehaviour {
         tailThumbnails = new List<Sprite>(Resources.LoadAll<Sprite>("VIPList/Tails"));
         neckThumbnails = new List<Sprite>(Resources.LoadAll<Sprite>("VIPList/Necks"));
 
-        rules     = SetVIPRules(numberOfRules,     2);
-        antiRules = SetVIPRules(numberOfAntiRules, 1);
+        allRules  = new List<List<Sprite>>();
+        rules     = new List<Sprite>();
+        antiRules = new List<Sprite>();
 
-        for (int i=0; i < numberOfRules; i++) {
-            Transform rule   = gameObject.transform.Find("Rule" + i);
-            Sprite    sprite = rule.GetComponent<SpriteRenderer>().sprite = rules[i];
-            ScaleRuleSprite(sprite, rule);
+        allRules.Add(headThumbnails);
+        allRules.Add(tailThumbnails);
+        allRules.Add(neckThumbnails);
+
+        string[] options = new string[] { "head", "head", "tail", "tail", "neck" , "neck" };
+        rulesOptions     = new List<string>(options);
+        options          = new string[] { "head", "tail", "neck" };
+        antiRulesOptions = new List<string>(options);
+
+        AddRule();
+        AddRule();
+        AddRule();
+    }
+    
+    private Sprite PickRandomRule(string ruleType) {
+        string category;
+
+        if (ruleType == "rule") {
+            int categoryIndex = Random.Range(0, rulesOptions.Count);
+            category = rulesOptions[categoryIndex];
+            rulesOptions.RemoveAt(categoryIndex);
+        } else {
+            int categoryIndex = Random.Range(0, antiRulesOptions.Count);
+            category = antiRulesOptions[categoryIndex];
+            antiRulesOptions.RemoveAt(categoryIndex);
         }
 
-        for (int i = 0; i < numberOfAntiRules; i++) {
-            Transform rule = gameObject.transform.Find("AntiRule" + i);
-            Sprite sprite = rule.GetComponent<SpriteRenderer>().sprite = antiRules[i];
-            ScaleRuleSprite(sprite, rule);
-        }
+        return PickRandomRuleFromCategory(category);
     }
 
-    private List<Sprite> SetVIPRules(int rulesYo, int maxPerCategory) {
-		List<Sprite> newRules = new List<Sprite>();
-		List<List<Sprite>> allRules = new List<List<Sprite>>();
+    private Sprite PickRandomRuleFromCategory(string category) {
+        List<Sprite> ruleSet;
 
-		allRules.Add(headThumbnails);
-		allRules.Add(tailThumbnails);
-		allRules.Add(neckThumbnails);
-
-        for (int i=0; i < rulesYo; i++) {
-            Sprite rule = PickRandomRule(allRules, maxPerCategory);
-            newRules.Add(rule);
+        if (category == "head") {
+            ruleSet = headThumbnails;
+        } else if (category == "tail") {
+            ruleSet = tailThumbnails;
+        } else {
+            ruleSet = neckThumbnails;
         }
-
-        return newRules;
-    }
-
-    private Sprite PickRandomRule(List<List<Sprite>> allRules, int maxPerCategory) {
-        int ruleSetIndex = Random.Range(0, allRules.Count);
-        List<Sprite> ruleSet = allRules[ruleSetIndex];
 
         int ruleIndex = Random.Range(0, ruleSet.Count);
         Sprite rule = ruleSet[ruleIndex];
-
-		// remove the chosen rule from all possible candidates
         ruleSet.RemoveAt(ruleIndex);
-		if (rule.name.Contains ("head")) {
-			headThumbnails = ruleSet;
-		} else if (rule.name.Contains("tail")) {
-			tailThumbnails = ruleSet;
-		} else if (rule.name.Contains("neck")) {
-			neckThumbnails = ruleSet;
-		}
-
-		if (ruleSet.Count <= (5 - maxPerCategory)) { // 5 is the initial length of each ruleSet aka the variety of attributes per category
-			allRules.RemoveAt(ruleSetIndex);
-		}
 
         return rule;
     }
@@ -149,5 +156,19 @@ public class VIPList : MonoBehaviour {
         badChoice.SetActive(true);
         yield return new WaitForSeconds(0.8f);
         badChoice.SetActive(false);
+    }
+
+    void AddRule() {
+        rules.Add(PickRandomRule("rule"));
+        Transform rule = gameObject.transform.Find("Rule" + (rules.Count-1));
+        Sprite sprite = rule.GetComponent<SpriteRenderer>().sprite = rules[rules.Count-1];
+        ScaleRuleSprite(sprite, rule);
+    }
+
+    void AddAntiRule() {
+        antiRules.Add(PickRandomRule("antiRule"));
+        Transform rule = gameObject.transform.Find("AntiRule" + (antiRules.Count - 1));
+        Sprite sprite = rule.GetComponent<SpriteRenderer>().sprite = antiRules[antiRules.Count - 1];
+        ScaleRuleSprite(sprite, rule);
     }
 }
