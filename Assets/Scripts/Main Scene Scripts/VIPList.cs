@@ -7,6 +7,7 @@ public class VIPList : MonoBehaviour {
     private int numberOfRules     = 5;
     private int numberOfAntiRules = 3;
 
+    List<List<Sprite>> allRules;
     List<Sprite> headThumbnails;
     List<Sprite> tailThumbnails;
     List<Sprite> neckThumbnails;
@@ -17,15 +18,25 @@ public class VIPList : MonoBehaviour {
         headThumbnails = new List<Sprite>(Resources.LoadAll<Sprite>("VIPList/Heads"));
         tailThumbnails = new List<Sprite>(Resources.LoadAll<Sprite>("VIPList/Tails"));
         neckThumbnails = new List<Sprite>(Resources.LoadAll<Sprite>("VIPList/Necks"));
+
+        allRules = new List<List<Sprite>>();
+        allRules.Add(headThumbnails);
+        allRules.Add(tailThumbnails);
+        allRules.Add(neckThumbnails);
+
         rules     = SetVIPRules(numberOfRules);
         antiRules = SetVIPRules(numberOfAntiRules);
 
         for (int i=0; i < numberOfRules; i++) {
-            gameObject.transform.Find("Rule" + i).GetComponent<SpriteRenderer>().sprite = rules[i];
+            Transform rule   = gameObject.transform.Find("Rule" + i);
+            Sprite    sprite = rule.GetComponent<SpriteRenderer>().sprite = rules[i];
+            ScaleRuleSprite(sprite, rule);
         }
 
         for (int i = 0; i < numberOfAntiRules; i++) {
-            gameObject.transform.Find("AntiRule" + i).GetComponent<SpriteRenderer>().sprite = antiRules[i];
+            Transform rule = gameObject.transform.Find("AntiRule" + i);
+            Sprite sprite = rule.GetComponent<SpriteRenderer>().sprite = antiRules[i];
+            ScaleRuleSprite(sprite, rule);
         }
     }
 
@@ -41,11 +52,6 @@ public class VIPList : MonoBehaviour {
     }
 
     private Sprite PickRandomRule() {
-        List<List<Sprite>> allRules = new List<List<Sprite>>();
-        allRules.Add(headThumbnails);
-        allRules.Add(tailThumbnails);
-        allRules.Add(neckThumbnails);
-
         int ruleSetIndex = Random.Range(0, allRules.Count);
         List<Sprite> ruleSet = allRules[ruleSetIndex];
 
@@ -54,6 +60,18 @@ public class VIPList : MonoBehaviour {
         ruleSet.RemoveAt(ruleIndex);
 
         return rule;
+    }
+
+    private void ScaleRuleSprite(Sprite sprite, Transform rule) {
+        if (sprite.name.Contains("tail")) {
+            rule.localScale = new Vector3(0.27f, 0.27f, 0.27f);
+        }
+        else if (sprite.name.Contains("head")) {
+            rule.localScale = new Vector3(0.29f, 0.29f, 0.29f);
+        }
+        else if (sprite.name.Contains("neck")) {
+            rule.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+        }
     }
 
     public void ScoreCat(GameObject cat) {
