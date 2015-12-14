@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class VIPList : MonoBehaviour {
 
+    [SerializeField] GameObject badChoice;
+
     private int numberOfRules     = 5;
     private int numberOfAntiRules = 3;
     private MoveMeters moveMeters;
@@ -135,6 +137,14 @@ public class VIPList : MonoBehaviour {
         if (value > 0) {
             scoring.score += (moveMeters.scoreMultiplier.currentMultiplier * value);
             scoring.UpdateScore();
+        } else if (value < 0) {
+            StartCoroutine(YellAtPlayer());
         }
+    }
+
+    IEnumerator YellAtPlayer() {
+        badChoice.SetActive(true);
+        yield return new WaitForSeconds(0.8f);
+        badChoice.SetActive(false);
     }
 }
