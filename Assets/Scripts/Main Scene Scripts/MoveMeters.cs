@@ -10,10 +10,12 @@ public class MoveMeters : MonoBehaviour {
     public bool gameOver = false;
 
     Scoring scoring;
+    VIPList vipList;
 
     void Start() {
         scoreMultiplier = FindObjectOfType<ScoreMultiplier>();
         scoring = FindObjectOfType<Scoring>();
+        vipList = FindObjectOfType<VIPList>();
         StartCoroutine("Drain");
     }
 
@@ -67,7 +69,7 @@ public class MoveMeters : MonoBehaviour {
     IEnumerator Drain() {
         while (true) {
             yield return new WaitForSeconds(1f);
-            if (meter_value > 0) { meter_value--; }
+            if (meter_value > 0) { meter_value -= ((vipList.catCount / 20) + 1); }
         }
     }
 }

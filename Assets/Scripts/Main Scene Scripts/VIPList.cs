@@ -17,6 +17,8 @@ public class VIPList : MonoBehaviour {
     List<Sprite> rules;
     List<Sprite> antiRules;
 
+    public int catCount = 0;
+
 	void Start () {
         moveMeters = FindObjectOfType<MoveMeters>();
         scoring = FindObjectOfType<Scoring>();
@@ -136,6 +138,7 @@ public class VIPList : MonoBehaviour {
 
         if (value > 0) {
             scoring.score += (moveMeters.scoreMultiplier.currentMultiplier * value);
+            catCount++;
             scoring.UpdateScore();
         } else if (value < 0) {
             StartCoroutine(YellAtPlayer());
