@@ -780,7 +780,7 @@ GameObject:
   - 212: {fileID: 369132915}
   - 95: {fileID: 369132917}
   m_Layer: 0
-  m_Name: crowd1
+  m_Name: Crowd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -905,6 +905,7 @@ GameObject:
   - 4: {fileID: 403372419}
   - 212: {fileID: 403372418}
   - 95: {fileID: 403372417}
+  - 114: {fileID: 403372420}
   m_Layer: 0
   m_Name: ScoreMult
   m_TagString: Untagged
@@ -968,6 +969,17 @@ Transform:
   - {fileID: 2111581565}
   m_Father: {fileID: 0}
   m_RootOrder: 19
+--- !u!114 &403372420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 403372416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 112586321c64ae74ca560ee239602ccc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &551072189
 GameObject:
   m_ObjectHideFlags: 0
@@ -2128,7 +2140,7 @@ ParticleSystem:
   randomSeed: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   moveWithTransform: 1
   InitialModule:
     enabled: 1
