@@ -9,6 +9,13 @@ public class ScoreMultiplier : MonoBehaviour {
     Animator crowdAnimator;
     Animator multAnimator;
 
+    int[] hashes = new int[] {
+        Animator.StringToHash("triggerMult1"),
+        Animator.StringToHash("triggerMult2"),
+        Animator.StringToHash("triggerMult3"),
+        Animator.StringToHash("triggerMult4")
+    };
+
 	void Start() {
         glitter = gameObject.GetComponentInChildren<ParticleSystem>();
         fog = GameObject.Find("FogMachine").GetComponent<ParticleSystem>();
@@ -18,20 +25,20 @@ public class ScoreMultiplier : MonoBehaviour {
     }
 
 	void Update() {
-	    if(currentMultiplier == 4 && !glitter.isPlaying) {
-            glitter.Play();
-            foreach(GameObject laser in lasers.GetComponentsInChildren<GameObject>()) {
-                laser.SetActive(true);
+	    if(currentMultiplier == 4) {
+            if(!glitter.isPlaying) { glitter.Play(); }
+            foreach(Transform laser in lasers.transform) {
+                laser.gameObject.GetComponent<LineRenderer>().enabled = true;
             }
-        } else if(glitter.isPlaying) {
-           glitter.Stop();
-            foreach (GameObject laser in lasers.GetComponentsInChildren<GameObject>()) {
-                laser.SetActive(false);
+        } else {
+            if(glitter.isPlaying) { glitter.Stop(); }
+            foreach (Transform laser in lasers.transform) {
+                laser.gameObject.GetComponent<LineRenderer>().enabled = false;
             }
         }
 
-        if(currentMultiplier>= 3 && !fog.isPlaying) {
-            fog.Play();
+        if(currentMultiplier>= 3) {
+            if(!fog.isPlaying) { fog.Play(); }
         } else if(fog.isPlaying) {
             fog.Stop();
         }
@@ -44,16 +51,20 @@ public class ScoreMultiplier : MonoBehaviour {
 	}
 
     void HandleAnimations() {
-        multAnimator.SetTrigger("triggerMult" + currentMultiplier);
+        multAnimator.SetTrigger(hashes[currentMultiplier-1]);
     }
 
     public void IncreaseMultiplier() {
-        currentMultiplier++;
-        HandleAnimations();
+        if (currentMultiplier < 4) {
+            currentMultiplier++;
+            HandleAnimations();
+        }
     }
 
     public void DecreaseMultiplier() {
-        currentMultiplier--;
-        HandleAnimations();
+        if (currentMultiplier > 1) {
+            currentMultiplier--;
+            HandleAnimations();
+        }
     }
 }
