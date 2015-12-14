@@ -19,8 +19,10 @@ public class Scoring : MonoBehaviour {
     }
 
     public bool isHighscore() {
+        GameObject.Find("HighScoreServer").GetComponent<Canvas>().enabled = true;
         string json = new WebClient().DownloadString("http://nepeta-cataria-server.herokuapp.com/highscores.json");
         JSONArray result = JSON.Parse(json) as JSONArray;
-        return score > result[result.Count - 1]["score"].AsInt;
+        GameObject.Find("HighScoreServer").GetComponent<Canvas>().enabled = false;
+        return score > result[result.Count - 1]["score"].AsInt;   
     }
 }

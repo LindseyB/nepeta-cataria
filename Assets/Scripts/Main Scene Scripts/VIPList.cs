@@ -55,6 +55,20 @@ public class VIPList : MonoBehaviour {
         AddRule();
         AddRule();
     }
+
+    void Update() {
+        if(catCount > 10 && rules.Count < 4) {
+            AddRule();
+        } else if(catCount > 20 && antiRules.Count < 1) {
+            AddAntiRule();
+        } else if(catCount > 30 && rules.Count < 5) {
+            AddRule();
+        } else if(catCount > 40 && antiRules.Count < 2) {
+            AddAntiRule();
+        } else if (catCount > 50 && antiRules.Count < 3) {
+            AddAntiRule();
+        }
+    }
     
     private Sprite PickRandomRule(string ruleType) {
         string category;
