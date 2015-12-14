@@ -10,7 +10,6 @@ public class VIPList : MonoBehaviour {
     List<Sprite> tailThumbnails;
     List<Sprite> rules;
 
-	// Use this for initialization
 	void Start () {
         headThumbnails = new List<Sprite>(Resources.LoadAll<Sprite>("VIPList/Heads"));
         tailThumbnails = new List<Sprite>(Resources.LoadAll<Sprite>("VIPList/Tails"));
@@ -20,11 +19,6 @@ public class VIPList : MonoBehaviour {
             gameObject.transform.Find("Rule" + i).GetComponent<SpriteRenderer>().sprite = rules[i];
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     private List<Sprite> SetVIPRules() {
         List<Sprite> newRules = new List<Sprite>();
@@ -50,5 +44,23 @@ public class VIPList : MonoBehaviour {
         ruleSet.RemoveAt(ruleIndex);
 
         return rule;
+    }
+
+    public void ScoreCat(GameObject cat) {
+        int matching = 0;
+        
+        foreach(Sprite sprite in rules) {
+            if (sprite.name.Contains("head") &&
+                sprite.name.Contains(cat.transform.Find("CatHead").GetComponent<SpriteRenderer>().sprite.name)) {
+                matching++;
+            } else if (sprite.name.Contains("tail") &&
+                       sprite.name.Contains(cat.transform.Find("CatTail").GetComponent<SpriteRenderer>().sprite.name)) {
+                matching++;
+            }
+        }
+
+        Debug.Log("Matching parts: " + matching);
+
+        // TODO: score here? elsewhere? IDK?
     }
 }

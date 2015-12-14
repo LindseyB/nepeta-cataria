@@ -8,15 +8,14 @@ public class CurrentCat : MonoBehaviour {
     int moveLineHash = Animator.StringToHash("moveIntoLine");
     int moveClubHash = Animator.StringToHash("moveIntoClub");
 
-    Sprite[] tails;
-    Sprite[] heads;
+    Sprite[] tails,
+             heads;
 
 	void Start () {
         tails = Resources.LoadAll<Sprite>("Tails");
         heads = Resources.LoadAll<Sprite>("Heads");
         Concatenate();
         animator = gameObject.GetComponent<Animator>();
-        
 	}
 	
 	void Update () {
