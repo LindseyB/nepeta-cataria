@@ -4,26 +4,33 @@ using System.Collections.Generic;
 
 public class VIPList : MonoBehaviour {
 
-    private int numberOfRules = 5;
+    private int numberOfRules     = 5;
+    private int numberOfAntiRules = 3;
 
     List<Sprite> headThumbnails;
     List<Sprite> tailThumbnails;
     List<Sprite> rules;
+    List<Sprite> antiRules;
 
 	void Start () {
         headThumbnails = new List<Sprite>(Resources.LoadAll<Sprite>("VIPList/Heads"));
         tailThumbnails = new List<Sprite>(Resources.LoadAll<Sprite>("VIPList/Tails"));
-        rules = SetVIPRules();
+        rules     = SetVIPRules(numberOfRules);
+        antiRules = SetVIPRules(numberOfAntiRules);
 
         for (int i=0; i < numberOfRules; i++) {
             gameObject.transform.Find("Rule" + i).GetComponent<SpriteRenderer>().sprite = rules[i];
         }
+
+        for (int i = 0; i < numberOfAntiRules; i++) {
+            gameObject.transform.Find("AntiRule" + i).GetComponent<SpriteRenderer>().sprite = antiRules[i];
+        }
     }
 
-    private List<Sprite> SetVIPRules() {
+    private List<Sprite> SetVIPRules(int rulesYo) {
         List<Sprite> newRules = new List<Sprite>();
 
-        for (int i=0; i < numberOfRules; i++) {
+        for (int i=0; i < rulesYo; i++) {
             Sprite rule = PickRandomRule();
             newRules.Add(rule);
         }
